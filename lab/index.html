@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Map Experiments</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <link rel="stylesheet" href="leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="Control.Geocoder.css" />
+
+  <style>
+      .map {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+      }
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="map" class="map"></div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="https://api.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js"></script>
+  <script src="leaflet-geo.js"></script>
+  <script src="leaflet-routing-machine.min.js"></script>
+  <script src="Control.Geocoder.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
