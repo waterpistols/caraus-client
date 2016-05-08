@@ -19,9 +19,13 @@ module.exports = {
     module: {
         loaders: [
             {
-                test:    /\.jsx?$/,
+                test:    /\.js?$/,
                 exclude: /node_modules/,
                 loaders: ['react-hot', 'babel']
+            },
+            {
+                test: /\.scss$/,
+                loader: "css-loader!sass-loader"
             }
         ]
     },
