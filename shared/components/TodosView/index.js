@@ -1,7 +1,6 @@
 import React from 'react';
 import client from 'lib/client';
 
-@client
 export default class TodosView extends React.Component {
     handleDelete = (e) => {
         const id = Number(e.target.dataset.id);
@@ -9,10 +8,11 @@ export default class TodosView extends React.Component {
         // Equivalent to `dispatch(deleteTodo())`
         this.props.deleteTodo(id);
     };
+    
     handleEdit = (e) => {
         const id  = Number(e.target.dataset.id);
-        const val = this.props.todos.get(id).text
-
+        const val = this.props.todos.get(id).text;
+        
         // For cutting edge UX
         let newVal = window.prompt('', val);
         this.props.editTodo(id, newVal);

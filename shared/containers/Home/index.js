@@ -20,8 +20,6 @@ export default class Home extends React.Component {
 
     render() {
         const { todos, dispatch } = this.props;
-
-
         return (
             <div id="todo-list">
                 <TodosForm {...bindActionCreators(TodoActions, dispatch)} />
