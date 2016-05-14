@@ -2,10 +2,11 @@ import Immutable from 'immutable';
 import {combineReducers} from 'redux';
 
 const defaultState = {
-    pickupAddress: null,
-    deliveryAddress: true,
+    pickupAddress: {},
+    deliveryAddress: {},
     pickupAddresses: [],
-    deliveryAddresses: []
+    deliveryAddresses: [],
+    results: []
 };
 
 function pickupAddress(state = defaultState.pickupAddress, action) {
@@ -46,13 +47,24 @@ function deliveryAddresses(state = defaultState.deliveryAddresses, action) {
     }
 }
 
+function results(state = defaultState.results, action) {
+    switch(action.type) {
+        case 'POST_SEARCH':
+            return action.res.data.results;
+
+        default:
+            return state;
+    }
+}
+
 
 
 const geoReducer = combineReducers({
     pickupAddress,
     deliveryAddress,
     pickupAddresses,
-    deliveryAddresses
+    deliveryAddresses,
+    results
 });
 
 export default geoReducer;
