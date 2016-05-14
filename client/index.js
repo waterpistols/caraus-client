@@ -5,16 +5,16 @@ import routes      from 'routes';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import * as reducers from 'reducers';
-import {fromJS} from 'immutable';
+import * as Immutable from 'immutable';
 import {applyMiddleware} from 'redux';
 import promiseMiddleware from 'lib/promiseMiddleware';
 
 let initialState = window.__INITIAL_STATE__;
-Object
-    .keys(initialState)
-    .forEach(key => {
-        initialState[key] = fromJS(initialState[key]);
-    });
+// Object
+//     .keys(initialState)
+//     .forEach(key => {
+//         initialState[key] = Immutable.fromJS(initialState[key]);
+//     });
 
 const reducer = combineReducers(reducers);
 const store = applyMiddleware(promiseMiddleware)(createStore)(reducer, initialState);

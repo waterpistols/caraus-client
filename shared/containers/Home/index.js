@@ -1,29 +1,22 @@
 import React                  from 'react';
 import TodosView              from 'components/TodosView';
 import TodosForm              from 'components/TodosForm';
-import { bindActionCreators } from 'redux';
+import Geocoder              from 'components/Geocoder';
+import {bindActionCreators} from 'redux';
 import * as TodoActions       from 'actions/TodoActions';
-import { connect }            from 'react-redux';
+import * as GeoActions       from 'actions/GeoActions';
+import {connect}            from 'react-redux';
 
-@connect(state => ({ todos: state.todos }))
+@connect(state => ({geos: state.geos}))
 export default class Home extends React.Component {
-    constructor() {
-        super();
-        this.text = 'List';
-    }
-
-    static needs = [
-        TodoActions.getTodos
-    ];
-
     render() {
-        const { todos, dispatch } = this.props;
+        const {dispatch} = this.props;
+        const {pickupAddresses, deliveryAddresses} = this.props.geos;
+
         return (
-            <div id="todo-list">
-                <TodosForm {...bindActionCreators(TodoActions, dispatch)} />
-                <br/>
-                <p>{this.text}</p>
-                <TodosView todos={todos} {...bindActionCreators(TodoActions, dispatch)} />
+            <div>
+                <Geocoder
+                    addresses={{pickupAddresses, deliveryAddresses}} {...bindActionCreators(GeoActions, dispatch)}/>
             </div>
         );
     }
