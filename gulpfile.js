@@ -128,7 +128,7 @@ gulp.task('watch', ['run-server', 'build'], function () {
 
     gulp.watch('shared/**/*.scss', ['shared-sass-watch']);
     gulp.watch('client/scss/**/*.scss', ['client-sass-watch']);
-    gulp.watch('shared/**/*.js', ['webpack']);
+    gulp.watch(['client/index.js', 'shared/**/*.js'], ['webpack']);
 });
 
 

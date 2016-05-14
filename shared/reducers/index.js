@@ -1,1 +1,1 @@
-export {default as todos} from './TodoReducer';
+export {default as geos} from './GeoReducer';
