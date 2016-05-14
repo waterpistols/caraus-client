@@ -3,17 +3,19 @@ import React                     from 'react';
 import {renderToString}        from 'react-dom/server'
 import {Router, RouterContext, match} from 'react-router';
 import createLocation            from 'history/lib/createLocation';
-import routes                    from './shared/routes';
+import routes                    from '../shared/routes';
 import {createStore, combineReducers} from 'redux';
 import {Provider}   from 'react-redux';
 import * as reducers from 'reducers';
 import {applyMiddleware} from 'redux';
 import promiseMiddleware from 'lib/promiseMiddleware';
 import fetchComponentData from 'lib/fetchComponentData';
-
+import path from 'path';
 const app = express();
 
-app.use(express.static(__dirname + '/dist'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, '../dist')));
+app.set('views', path.join(__dirname, 'views'));
 
 app.use((req, res) => {
     const location = createLocation(req.url);
@@ -38,28 +40,21 @@ app.use((req, res) => {
 
             const initialState = store.getState();
 
-            const componentHTML = renderToString(InitialComponent);
-
-            return `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="utf-8">
-                    <title>Isomorphic Redux Demo</title>
-                    <script>
-                        window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-                    </script>
-                </head>
-                <body>
-                <div id="react-view">${componentHTML}</div>
-                <script type="application/javascript" src="bundle.js"></script>
-                </body>
-                </html>`;
+            return {
+                html: renderToString(InitialComponent),
+                initialState: JSON.stringify(initialState)
+            };
         }
 
         fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
             .then(renderView)
-            .then(html => res.end(html))
+            .then(view => {
+                res.render('index', {
+                    html: view.html,
+                    initialState: view.initialState,
+                    livereloadJs: 'livereload.js'
+                });
+            })
             .catch(err => res.end(err.message));
     });
 });
