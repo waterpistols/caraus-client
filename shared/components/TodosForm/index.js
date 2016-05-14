@@ -18,5 +18,3 @@ export default class TodosForm extends React.Component {
         )
     }
 }
-
-

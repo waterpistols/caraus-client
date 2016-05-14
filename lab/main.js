@@ -22,8 +22,8 @@ var router = L.Routing.control({
 }).addTo(map);
 
 var clickHandler = function(e) {
-    var lat = 0.2; // 33 km
-    var lng = 0.3; // 
+    var lat = 0.2;
+    var lng = 0.3;
     var found = false;
     var northest = e.latlng.lat + lat;
     var southest = e.latlng.lat - lat;
@@ -62,16 +62,16 @@ var clickHandler = function(e) {
       if(firstPoint.distanceTo(start) <= firstPoint.distanceTo(finish) && secondPoint.distanceTo(finish) <= secondPoint.distanceTo(start)) {
         var popLocation= searchPoints[i];
         var popup = L.popup()
-        .setLatLng(popLocation)
-        .setContent('Bingo')
-        .openOn(map);
+          .setLatLng(popLocation)
+          .setContent('Bingo')
+          .openOn(map);
 
       } else {
         var popLocation= searchPoints[i];
         var popup = L.popup()
-        .setLatLng(popLocation)
-        .setContent('Wrong Direction')
-        .openOn(map);
+          .setLatLng(popLocation)
+          .setContent('Wrong Direction')
+          .openOn(map);
       }
 
     }

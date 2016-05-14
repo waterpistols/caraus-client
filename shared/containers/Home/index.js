@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as TodoActions       from 'actions/TodoActions';
 import { connect }            from 'react-redux';
 
-
-
 @connect(state => ({ todos: state.todos }))
 export default class Home extends React.Component {
     constructor() {
