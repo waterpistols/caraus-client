@@ -7,7 +7,6 @@ import * as TodoActions       from 'actions/TodoActions';
 import * as GeoActions       from 'actions/GeoActions';
 import {connect}            from 'react-redux';
 
-
 @connect(state => ({geos: state.geos}))
 export default class Home extends React.Component {
     render() {
