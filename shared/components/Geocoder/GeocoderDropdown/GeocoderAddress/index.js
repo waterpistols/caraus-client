@@ -1,13 +1,13 @@
 import React from 'react';
 
 export default class GeocoderAddress extends React.Component {
-    handleClick = (event) => {
-        
-    };
 
+    clickHandle() {
+        this.props.setAddress(this.props.address);
+    }
     render() {
         return (
-            <li data-lat={this.props.address.geometry.location.lat} data-lng={this.props.address.geometry.location.long}>
+            <li onClick={this.clickHandle.bind(this)}>
                 {this.props.address.formatted_address}
             </li>
         )

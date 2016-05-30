@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use((req, res) => {
     const location = createLocation(req.url);
     const reducer = combineReducers(reducers);
-    
+
     const store = applyMiddleware(promiseMiddleware)(createStore)(reducer);
 
     match({routes, location}, (err, redirectLocation, renderProps) => {
@@ -40,7 +40,6 @@ app.use((req, res) => {
             );
 
             const initialState = store.getState();
-            console.log(initialState);
             return {
                 html: '', //renderToString(InitialComponent),
                 initialState: JSON.stringify(initialState)

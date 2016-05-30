@@ -11,12 +11,11 @@ import {connect}            from 'react-redux';
 export default class Home extends React.Component {
     render() {
         const {dispatch} = this.props;
-        const {pickupAddresses, deliveryAddresses} = this.props.geos;
 
         return (
             <div>
                 <Geocoder
-                    addresses={{pickupAddresses, deliveryAddresses}} {...bindActionCreators(GeoActions, dispatch)}/>
+                    addresses={this.props.geos} {...bindActionCreators(GeoActions, dispatch)}/>
             </div>
         );
     }
