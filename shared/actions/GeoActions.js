@@ -2,7 +2,7 @@ import request from 'axios';
 import querystring from 'querystring';
 
 const GOOGLE_API = 'https://maps.googleapis.com/maps/api/geocode/json?';
-const BACKEND_API = 'http://api.caraus-server.dev/routes/search';
+const BACKEND_API = 'http://api.caraus-server.dev';
 
 let getActions = {
     pickup: 'GET_PICKUP_ADDRESSES',
@@ -40,6 +40,6 @@ export function search(address1, address2) {
     };
     return  {
         type: 'POST_SEARCH',
-        promise: request.post(BACKEND_API, payload)
+        promise: request.post(BACKEND_API + '/routes/search', payload)
     }
 }
