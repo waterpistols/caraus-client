@@ -46,6 +46,7 @@ app.use((req, res) => {
                 <head>
                     <meta charset="utf-8">
                     <title>Isomorphic Redux Demo</title>
+                    <link rel="stylesheet" href="/css/style.css" />
                     <link rel="stylesheet" href="/leaflet.css" />
                     <link rel="stylesheet" href="/leaflet-routing-machine.css" />
                     <link rel="stylesheet" href="/Control.Geocoder.css" />

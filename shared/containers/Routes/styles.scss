@@ -1,0 +1,18 @@
+#routes-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+
+  #routes {
+    flex-basis: 50%;
+  }
+
+  #map-wrapper {
+    flex-basis: 50%;
+
+    #map {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

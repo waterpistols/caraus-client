@@ -23,7 +23,7 @@ function pickupAddresses(state = defaultState.pickupAddresses, action) {
         case 'GET_PICKUP_ADDRESSES':
             return action.res.data.results;
 
-        default: 
+        default:
             return state;
     }
 }
