@@ -2,14 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Isomorphic Redux Demo</title>
-    <script>
-        window.__INITIAL_STATE__ = <%- initialState %>;
-    </script>
+    <title>Caraus</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div id="react-view"><%- html %></div>
+    <div id="react-view"></div>
     <script src="bundle.js"></script>
     <% if (typeof livereloadJs !== 'undefined') { %>
         <script src="<%= livereloadJs %>"></script>

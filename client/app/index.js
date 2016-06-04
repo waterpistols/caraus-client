@@ -9,15 +9,9 @@ import * as Immutable from 'immutable';
 import {applyMiddleware} from 'redux';
 import promiseMiddleware from 'lib/promiseMiddleware';
 
-let initialState = window.__INITIAL_STATE__;
-// Object
-//     .keys(initialState)
-//     .forEach(key => {
-//         initialState[key] = Immutable.fromJS(initialState[key]);
-//     });
 
 const reducer = combineReducers(reducers);
-const store = applyMiddleware(promiseMiddleware)(createStore)(reducer, initialState);
+const store = applyMiddleware(promiseMiddleware)(createStore)(reducer);
 
 render(
     <Provider store={store}>

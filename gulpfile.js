@@ -5,12 +5,15 @@ var path = require('path');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var rimraf = require('gulp-rimraf');
-var buildPath = 'dist';
+
 var webpack = require('webpack-stream');
 var livereload = require('gulp-livereload');
 var webpackConfig = require('./webpack.config');
 var childProcess = require('child_process');
 var nodemon = require('gulp-nodemon');
+
+
+var buildPath = 'dist';
 gulp.task('sass-build', function (done) {
     return runSequence(
         'sass-app',
@@ -48,7 +51,7 @@ gulp.task('copy-bootstrap', function () {
 
 gulp.task('sass-app', function () {
 
-    return gulp.src(['shared/**/*.scss'])
+    return gulp.src(['client/app/**/*.scss'])
         .pipe(concat('_app.scss'))
         .pipe(gulp.dest(path.join(buildPath, 'scss/partials')));
 });
